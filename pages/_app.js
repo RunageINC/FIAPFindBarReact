@@ -5,7 +5,11 @@ import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <SiteLayout>
+    <SiteLayout className={{
+      backgroundImage: "url('./woodbg.jpeg')",
+      backgroundSize: "cover",
+      backgroundColor: "#aa835a",
+    }}>
       <Component {...pageProps} />
     </SiteLayout>
   )
