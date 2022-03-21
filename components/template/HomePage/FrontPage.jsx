@@ -23,18 +23,16 @@ const FrontPage = (props) => {
   };
 
   const onShow = async (bar) => {
-    const url = fiapURL + "/bares/" + bar.id;
-
-    await fetch(url)
-    .then(res => res.json())
-    .then(data => setChosenBar(data))
-    .finally(() => setModalShow(true))
-    .catch(err => console.log(err));
+    setModalShow(true);
   }
 
   const onHide = async () => {
     setModalShow(false);
   };
+
+  const handleBarChosen = (bar) => {
+    setChosenBar(bar);
+  }
 
   return (
     <Container className="mt-4">
@@ -54,6 +52,7 @@ const FrontPage = (props) => {
                 key={bar.id}
                 bar={bar}
                 onShow={onShow}
+                handleBarChosen={handleBarChosen}
                 img={image}
               />
             </Col>

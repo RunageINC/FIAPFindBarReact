@@ -20,6 +20,7 @@ export async function getStaticProps() {
     props: {
       barList: bares,
     },
+    revalidate: 1,
   };
 }
 

@@ -3,12 +3,13 @@ import Button from 'react-bootstrap/Button';
 
 import classes from './BarCard.module.css';
 
-const BarCard = ({ bar, img, onShow }) => {
+const BarCard = ({ bar, img, onShow, handleBarChosen }) => {
     const { nome, endereco } = bar;
     const { logradouro, numero, cep, bairro, cidade, estado } = endereco;
 
     const exploreBarAction = () => {
-        onShow(bar);
+        handleBarChosen(bar)
+        onShow();
     }
 
     return (
