@@ -23,21 +23,15 @@ const FrontPage = (props) => {
   };
 
   const onShow = async () => {
-    await fetch(fiapURL + "/bares/" + chosenBar.id)
+    await fetch(url)
     .then(res => res.json())
-    .then(data =>  {
-      setChosenBar(data);
-      setModalShow(true);
-    })
-    .catch(err => console.err(err));
+    .then(data => setChosenBar(data))
+    .finally(() => setModalShow(true))
+    .catch(err => console.log(err));
   }
 
   const onHide = async () => {
     setModalShow(false);
-  };
-
-  const onHandleChosenBar = (bar) => {
-    setChosenBar(bar);
   };
 
   return (
@@ -57,8 +51,7 @@ const FrontPage = (props) => {
               <BarCard
                 key={bar.id}
                 bar={bar}
-                onHide={onHide}
-                onHandleChosenBar={onHandleChosenBar}
+                onShow={onShow}
                 img={image}
               />
             </Col>
