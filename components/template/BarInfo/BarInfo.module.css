@@ -32,15 +32,3 @@
 .musicFalse {
     color: red;
 }
-
-.comments {
-    font-size: 20px;
-    border-bottom: 1px solid black;
-    padding: 5px;
-}
-
-.commentsMuted {
-    font-size: 20px;
-    color: grey;
-    padding: 5px;
-}

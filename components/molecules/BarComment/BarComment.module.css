@@ -1,0 +1,11 @@
+.comment {
+    border: 1px solid grey;
+    padding: 5px;
+    font-size: 25px;   
+}
+
+.commentMuted {
+    font-size: 25px;
+    color: grey;
+    padding: 10px;
+}

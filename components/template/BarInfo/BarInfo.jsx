@@ -8,6 +8,7 @@ import Card from "react-bootstrap/Card";
 
 import SmallTextDecoration from "../../atoms/SmallTextDecoration/SmallTextDecoration";
 import FormComentary from "../../molecules/FormComentary/FormComentary";
+import BarInfo from "../../molecules/BarComment/BarComment";
 
 import classes from "./BarInfo.module.css";
 
@@ -139,12 +140,20 @@ const BarInfo = (props) => {
             <Card body>
               {comentarios.length > 0 ? (
                 comentarios.map((comentario) => (
-                  <p key={Math.random(200)} className={classes.comment}>
-                    {comentario.mensagem}
-                  </p>
+                  <BarInfo 
+                    mensagem={comentario.mensagem}
+                    key={Math.random(100)}
+                    hasComment={true}
+                    avaliacao={comentario.avaliacao}
+                  />
                 ))
               ) : (
-                <p className={classes.commentMuted}>No comments yet</p>
+                <BarInfo 
+                    mensagem=""
+                    key={Math.random(100)}
+                    hasComment={false}
+                    avaliacao=""
+                  />
               )}
             </Card>
           </Row>
