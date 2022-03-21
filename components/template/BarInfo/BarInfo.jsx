@@ -140,7 +140,7 @@ const BarInfo = (props) => {
             <Card body>
               {comentarios.length > 0 ? (
                 comentarios.map((comentario) => (
-                  <BarInfo 
+                  <BarComment 
                     mensagem={comentario.mensagem}
                     key={Math.random(100)}
                     hasComment={true}
@@ -148,7 +148,7 @@ const BarInfo = (props) => {
                   />
                 ))
               ) : (
-                <BarInfo 
+                <BarComment 
                     mensagem=""
                     key={Math.random(100)}
                     hasComment={false}
