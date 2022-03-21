@@ -187,7 +187,7 @@ const BarInfo = (props) => {
           </Row>
           <Row className="mt-4">
             <Card body>
-              <FormComentary />
+              <FormComentary barId={bar.id}/>
             </Card>
           </Row>
         </Container>

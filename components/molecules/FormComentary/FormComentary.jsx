@@ -1,35 +1,83 @@
-import { fiapURL } from '../../static/config';
-import { useRef } from 'react';
+import { fiapURL } from "../../static/config";
+import { useRef } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
-const FormComentary = () => {
+const FormComentary = ({ barId }) => {
   const commentRef = useRef();
-  const url = fiapURL + "/comentarios"
+  const rateRef = useRef();
+  const url = fiapURL + "/comentarios/bares/" + barId;
 
-  const onSubmitFormHandle = (event) => {
+  const onSubmitFormHandle = async (event) => {
+    event.preventDefault();
+
     const formData = {
-        text: event.target.value,
-    }
-  }
+      comment: commentRef.current.value,
+      rate: rateRef.current.value,
+    };
 
+    console.log(formData);
+
+    try {
+      await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          mensagem: formData.comment,
+          nota: formData.rate,
+        }),
+      })
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <Form onSubmit={onSubmitFormHandle}>
       <Row>
-        <Col sm="10">
-          <Form.Control 
-            type="text" 
-            name="comment" 
-            id="comment" 
-            placeholder="Insira seu comentário" 
-            ref={commentRef}/>
+        <Col sm="8">
+          <Form.Label htmlFor="comment">
+            Comente o que achou:
+          </Form.Label>
+          <Form.Control
+            required
+            type="text"
+            name="comment"
+            id="comment"
+            placeholder="Insira seu comentário"
+            ref={commentRef}
+          />
         </Col>
         <Col sm="2">
-          <Button type="submit">Postar</Button>
+          <Form.Label htmlFor="rate">
+            <span className="material-icons" style={{ color: "gold" }}>
+              {" "}
+              star{" "}
+            </span>
+          </Form.Label>
+          <Form.Control
+            required
+            type="number"
+            name="rate"
+            id="rate"
+            min="0"
+            max="5"
+            step="1"
+            ref={rateRef}
+          />
+        </Col>
+        <Col sm="2" className="mt-4">
+          <Button type="submit">
+            <span className="material-icons" style={{ color: "white" }}>
+              {" "}
+              send{" "}
+            </span>
+          </Button>
         </Col>
       </Row>
     </Form>
