@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { fiapURL } from '../../static/config';
 
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
@@ -21,8 +22,14 @@ const FrontPage = (props) => {
     return barImageList[index].img;
   };
 
-  const onHide = () => {
-    setModalShow(!modalShow);
+  const onHide = async () => {
+    await fetch(fiapURL + "/bares/" + chosenBar.id)
+    .then(res => res.json())
+    .then(data =>  {
+      setChosenBar(data);
+      setModalShow(!modalShow);
+    })
+    .catch(err => console.err(err));
   };
 
   const onHandleChosenBar = (bar) => {
