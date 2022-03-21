@@ -136,7 +136,17 @@ const BarInfo = (props) => {
             </Card>
           </Row>
           <Row className="mt-4">
-            <Card body>{}</Card>
+            <Card body>
+              {comentarios.length > 0 ? (
+                comentarios.map((comentario) => (
+                  <p key={Math.random(200)} className={classes.comment}>
+                    {comentario}
+                  </p>
+                ))
+              ) : (
+                <p className={classes.commentMuted}>No comments yet</p>
+              )}
+            </Card>
           </Row>
           <Row className="mt-4">
             <Card body className=" d-flex flex-row">
