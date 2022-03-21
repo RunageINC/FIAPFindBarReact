@@ -140,7 +140,7 @@ const BarInfo = (props) => {
               {comentarios.length > 0 ? (
                 comentarios.map((comentario) => (
                   <p key={Math.random(200)} className={classes.comment}>
-                    {comentario}
+                    {comentario.mensagem}
                   </p>
                 ))
               ) : (
