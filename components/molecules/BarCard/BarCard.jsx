@@ -8,7 +8,7 @@ const BarCard = ({ bar, img, onShow }) => {
     const { logradouro, numero, cep, bairro, cidade, estado } = endereco;
 
     const exploreBarAction = () => {
-        onShow();
+        onShow(bar);
     }
 
     return (

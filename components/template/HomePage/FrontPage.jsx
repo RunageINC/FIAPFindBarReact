@@ -22,7 +22,9 @@ const FrontPage = (props) => {
     return barImageList[index].img;
   };
 
-  const onShow = async () => {
+  const onShow = async (bar) => {
+    const url = fiapURL + "/bares/" + bar.id;
+
     await fetch(url)
     .then(res => res.json())
     .then(data => setChosenBar(data))
