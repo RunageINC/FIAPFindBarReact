@@ -22,14 +22,18 @@ const FrontPage = (props) => {
     return barImageList[index].img;
   };
 
-  const onHide = async () => {
+  const onShow = async () => {
     await fetch(fiapURL + "/bares/" + chosenBar.id)
     .then(res => res.json())
     .then(data =>  {
       setChosenBar(data);
-      setModalShow(!modalShow);
+      setModalShow(true);
     })
     .catch(err => console.err(err));
+  }
+
+  const onHide = async () => {
+    setModalShow(false);
   };
 
   const onHandleChosenBar = (bar) => {
