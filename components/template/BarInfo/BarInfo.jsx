@@ -8,7 +8,7 @@ import Card from "react-bootstrap/Card";
 
 import SmallTextDecoration from "../../atoms/SmallTextDecoration/SmallTextDecoration";
 import FormComentary from "../../molecules/FormComentary/FormComentary";
-import BarInfo from "../../molecules/BarComment/BarComment";
+import BarComment from "../../molecules/BarComment/BarComment";
 
 import classes from "./BarInfo.module.css";
 
