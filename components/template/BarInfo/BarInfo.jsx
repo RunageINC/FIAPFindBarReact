@@ -144,7 +144,7 @@ const BarInfo = (props) => {
                     mensagem={comentario.mensagem}
                     key={Math.random(100)}
                     hasComment={true}
-                    avaliacao={comentario.avaliacao}
+                    nota={comentario.nota}
                   />
                 ))
               ) : (
@@ -152,7 +152,7 @@ const BarInfo = (props) => {
                     mensagem=""
                     key={Math.random(100)}
                     hasComment={false}
-                    avaliacao=""
+                    nota=""
                   />
               )}
             </Card>
