@@ -6,7 +6,7 @@ function HomePage(props) {
   return <FrontPage barImageList={barImageList} barList={props.barList}/>;
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps(context) {
   const url = fiapURL + "/bares";
 
   const bares = await fetch(url)
@@ -19,8 +19,7 @@ export async function getStaticProps() {
   return {
     props: {
       barList: bares,
-    },
-    revalidate: 1,
+    }
   };
 }
 
