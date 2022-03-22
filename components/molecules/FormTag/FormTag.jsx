@@ -19,7 +19,7 @@ const FormTag = ({ barId, addTagHandler }) => {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    value: tagRef,
+                    value: tagRef.current.value,
                 }),
             });
 
@@ -31,7 +31,7 @@ const FormTag = ({ barId, addTagHandler }) => {
 
     return (
         <Form onSubmit={onSubmitFormHandle}>
-            <Col sm="10">
+            <Col sm="8">
                 <Form.Control
                     required
                     type="text"
