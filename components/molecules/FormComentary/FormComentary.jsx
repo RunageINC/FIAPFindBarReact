@@ -32,7 +32,6 @@ const FormComentary = ({ barId, addCommentHandler }) => {
       })
 
       addCommentHandler(formData);
-      event.reset();
     } catch (error) {
       console.log(error);
     }

@@ -42,7 +42,7 @@ const FrontPage = (props) => {
   }
 
   const onAddTag = (tag) => {
-    setChosenBarTags([...chosenBarTasg, tag]);
+    setChosenBarTags([...chosenBarTags, tag]);
   }
 
   return (
