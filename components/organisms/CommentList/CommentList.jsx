@@ -1,5 +1,7 @@
 import Card from "react-bootstrap/Card";
 
+import BarComment from "../../molecules/BarComment/BarComment";
+
 const CommentList = ({ barComments }) => {
   return (
     <Card body>

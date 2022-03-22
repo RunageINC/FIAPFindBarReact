@@ -8,12 +8,12 @@ import Card from "react-bootstrap/Card";
 
 import SmallTextDecoration from "../../atoms/SmallTextDecoration/SmallTextDecoration";
 import FormComentary from "../../molecules/FormComentary/FormComentary";
-import BarComment from "../../molecules/BarComment/BarComment";
+
 import BarWorkingTime from "../../molecules/BarWorkingTime/BarWorkingTime";
 import MusicalStyles from "../../molecules/MusicalStyles/MusicalStyles";
 import BarAddress from "../../molecules/BarAddress/BarAddress";
 import BarRate from "../../molecules/BarRate/BarRate";
-
+import CommentList from "../../organisms/CommentList/CommentList";
 
 import classes from "./BarInfo.module.css";
 
@@ -87,25 +87,7 @@ const BarInfo = (props) => {
             <BarRate rating={avaliacao}/>
           </Row>
           <Row className="mt-4">
-            <Card body>
-              {barComments.length > 0 ? (
-                barComments.map((comment) => (
-                  <BarComment 
-                    mensagem={comment.mensagem}
-                    key={Math.random(100)}
-                    hasComment={true}
-                    nota={comment.nota}
-                  />
-                ))
-              ) : (
-                <BarComment 
-                    mensagem=""
-                    key={Math.random(100)}
-                    hasComment={false}
-                    nota=""
-                  />
-              )}
-            </Card>
+            <CommentList barComments={barComments} />
           </Row>
           <Row className="mt-4">
             <Card body className=" d-flex flex-row">

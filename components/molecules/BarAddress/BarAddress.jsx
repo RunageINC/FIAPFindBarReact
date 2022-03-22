@@ -1,18 +1,18 @@
 import Card from "react-bootstrap/Card";
 
-const BarAddress = () => {
+const BarAddress = ({ address, number, district, city, state, cep }) => {
   return (
     <Card body>
       <section className="bar-address">
         <h4>Endereço: </h4>
-        <p>{bar.endereco.logradouro + " " + bar.endereco.numero}</p>
-        <p>{bar.endereco.cep}</p>
+        <p>{address + " " + number}</p>
+        <p>{cep}</p>
         <p>
-          {bar.endereco.bairro +
+          {district +
             " - " +
-            bar.endereco.cidade +
+            city +
             " " +
-            bar.endereco.estado}
+            state}
         </p>
       </section>
     </Card>
