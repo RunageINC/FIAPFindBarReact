@@ -14,6 +14,7 @@ import MusicalStyles from "../../molecules/MusicalStyles/MusicalStyles";
 import BarAddress from "../../molecules/BarAddress/BarAddress";
 import BarRate from "../../molecules/BarRate/BarRate";
 import CommentList from "../../organisms/CommentList/CommentList";
+import TagList from "../../organisms/TagList/TagList";
 
 import classes from "./BarInfo.module.css";
 
@@ -90,40 +91,15 @@ const BarInfo = (props) => {
             <CommentList barComments={barComments} />
           </Row>
           <Row className="mt-4">
-            <Card body className=" d-flex flex-row">
-              <SmallTextDecoration
-                key={Math.random(100)}
-                text="tag1"
-                type="tag"
-                className="gap-3"
-              />
-              <SmallTextDecoration
-                key={Math.random(100)}
-                text="tag2"
-                type="tag"
-                className="gap-3"
-              />
-              <SmallTextDecoration
-                key={Math.random(100)}
-                text="tag3"
-                type="tag"
-                className="gap-3"
-              />
-              <SmallTextDecoration
-                key={Math.random(100)}
-                text="tag4"
-                type="tag"
-                className="gap-3"
-              />
-            </Card>
-          </Row>
-          <Row className="mt-4">
             <Card body>
               <FormComentary 
                 barId={bar.id}
                 addCommentHandler={addCommentHandler}
               />
             </Card>
+          </Row>
+          <Row className="mt-4">
+            <TagList tagList={barTags} />
           </Row>
         </Container>
       </Modal.Body>
