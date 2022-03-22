@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 const FormTag = ({ barId, addTagHandler }) => {
     const tagRef = useRef();
@@ -31,7 +32,7 @@ const FormTag = ({ barId, addTagHandler }) => {
 
     return (
         <Form onSubmit={onSubmitFormHandle}>
-            <Form.Group>
+            <Row>
                 <Col sm="8">
                     <Form.Control
                         required
@@ -42,12 +43,12 @@ const FormTag = ({ barId, addTagHandler }) => {
                         ref={tagRef}
                     />  
                 </Col>
-                <Col sm="2">
+                <Col sm="2" className="gap-2">
                     <Button type="submit">
                         <span className="material-icons" style={{ color: "white" }}> send </span>
                     </Button>
                 </Col>
-            </Form.Group>
+            </Row>
         </Form>
     );
 }
