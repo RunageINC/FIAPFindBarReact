@@ -31,21 +31,23 @@ const FormTag = ({ barId, addTagHandler }) => {
 
     return (
         <Form onSubmit={onSubmitFormHandle}>
-            <Col sm="8">
-                <Form.Control
-                    required
-                    type="text"
-                    name="tag"
-                    id="tag"
-                    placeholder="Não encontrou a tag que queria? Adicione aqui!"
-                    ref={tagRef}
-                />  
-            </Col>
-            <Col sm="2">
-                <Button type="submit">
-                    <span className="material-icons" style={{ color: "white" }}> send </span>
-                </Button>
-            </Col>
+            <Form.Group>
+                <Col sm="8">
+                    <Form.Control
+                        required
+                        type="text"
+                        name="tag"
+                        id="tag"
+                        placeholder="Não encontrou a tag que queria? Adicione aqui!"
+                        ref={tagRef}
+                    />  
+                </Col>
+                <Col sm="2">
+                    <Button type="submit">
+                        <span className="material-icons" style={{ color: "white" }}> send </span>
+                    </Button>
+                </Col>
+            </Form.Group>
         </Form>
     );
 }

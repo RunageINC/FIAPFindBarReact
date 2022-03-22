@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 import SmallTextDecoration from "../../atoms/SmallTextDecoration/SmallTextDecoration";
 import FormTag from "../../molecules/FormTag/FormTag";
 
-const TagList = ({ tagList, addTagHandler }) => {
+const TagList = ({ tagList, addTagHandler, barId }) => {
   return (
     <Card body className=" d-flex flex-row">
       <Row>
@@ -20,7 +20,7 @@ const TagList = ({ tagList, addTagHandler }) => {
         })}
       </Row>
       <Row>
-          <FormTag addTagHandler={addTagHandler} />
+          <FormTag addTagHandler={addTagHandler} barId={barId} />
       </Row>
     </Card>
   );
