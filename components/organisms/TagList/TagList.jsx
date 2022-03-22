@@ -8,7 +8,7 @@ import FormTag from "../../molecules/FormTag/FormTag";
 const TagList = ({ tagList, addTagHandler, barId }) => {
   return (
     <Card body className=" d-flex flex-row">
-      <Row>
+      
         {tagList.map((tag) => {
           return (
             <SmallTextDecoration
@@ -18,10 +18,8 @@ const TagList = ({ tagList, addTagHandler, barId }) => {
             />
           );
         })}
-      </Row>
-      <Row>
-          <FormTag addTagHandler={addTagHandler} barId={barId} />
-      </Row>
+        <FormTag addTagHandler={addTagHandler} barId={barId} />
+      
     </Card>
   );
 };
