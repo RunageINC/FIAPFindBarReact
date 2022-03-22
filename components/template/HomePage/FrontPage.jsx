@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { fiapURL } from '../../static/config';
 
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";

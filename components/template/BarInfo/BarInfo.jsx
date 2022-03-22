@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
@@ -11,12 +9,17 @@ import Card from "react-bootstrap/Card";
 import SmallTextDecoration from "../../atoms/SmallTextDecoration/SmallTextDecoration";
 import FormComentary from "../../molecules/FormComentary/FormComentary";
 import BarComment from "../../molecules/BarComment/BarComment";
+import BarWorkingTime from "../../molecules/BarWorkingTime/BarWorkingTime";
+import MusicalStyles from "../../molecules/MusicalStyles/MusicalStyles";
+import BarAddress from "../../molecules/BarAddress/BarAddress";
+import BarRate from "../../molecules/BarRate/BarRate";
+
 
 import classes from "./BarInfo.module.css";
 
 const BarInfo = (props) => {
   const { bar, imageList, barComments, barTags, onAddComment, onAddTag } = props;
-  const { estilos_musicais } = bar;
+  const { estilos_musicais, endereco, avaliacao } = bar;
 
   const randomImage = () => {
     const index = Math.floor(Math.random() * imageList.length);
@@ -57,94 +60,31 @@ const BarInfo = (props) => {
           </Row>
           <Row>
             <Col>
-              <Card body className="mt-3">
-                <ul className={classes.modalList}>
-                  <li>
-                    <span className={"material-icons " + classes.opening}>
-                      {" "}
-                      timer{" "}
-                    </span>{" "}
-                    Abertura: {bar.horario_abertura}
-                  </li>
-                  <li>
-                    <span className={"material-icons " + classes.close}>
-                      {" "}
-                      timer_off{" "}
-                    </span>
-                    Encerramento: {bar.horario_fechamento}
-                  </li>
-                </ul>
-              </Card>
+              <BarWorkingTime 
+                openHour={bar.horario_abertura}
+                closeHour={bar.horario_fechamento}
+              />
             </Col>
             <Col>
-              <Card body className="mt-3">
-                <section className="bar-type">
-                  <h4>Tipo: {bar.tipo}</h4>
-                </section>
-                <section className="bar-musical-styles">
-                  {estilos_musicais.map((style) => (
-                    <SmallTextDecoration
-                      key={Math.random(100)}
-                      text={style}
-                      type="music"
-                    />
-                  ))}
-                </section>
-                <section className="bar-type">
-                  <h3>
-                    Música ao vivo:
-                    {bar.musica_ao_vivo ? (
-                      <span className={"material-icons " + classes.musicTrue}>
-                        {" "}
-                        done{" "}
-                      </span>
-                    ) : (
-                      <span className={"material-icons " + classes.musicFalse}>
-                        {" "}
-                        clear{" "}
-                      </span>
-                    )}
-                  </h3>
-                </section>
-              </Card>
+              <MusicalStyles 
+                type={bar.tipo}
+                musicalStyles={estilos_musicais}
+                hasLiveMusic={bar.musica_ao_vivo}
+              />
             </Col>
           </Row>
           <Row className="mt-4">
-            <Card body>
-              <section className="bar-address">
-                <h4>Endereço: </h4>
-                <p>{bar.endereco.logradouro + " " + bar.endereco.numero}</p>
-                <p>{bar.endereco.cep}</p>
-                <p>
-                  {bar.endereco.bairro +
-                    " - " +
-                    bar.endereco.cidade +
-                    " " +
-                    bar.endereco.estado}
-                </p>
-              </section>
-            </Card>
+            <BarAddress 
+              address={endereco.logradouro}
+              number={endereco.numero}
+              district={endereco.bairro}
+              city={endereco.cidade}
+              state={endereco.estado}
+              cep={endereco.cep}
+            />
           </Row>
           <Row className="mt-4">
-            <Card body>
-              <section className="bar-musical-rate">
-                <h3>
-                  Avaliação:
-                  <span className={"material-icons " + classes.star}>
-                    {" "}
-                    star{" "}
-                  </span>
-                  <span className={"material-icons " + classes.star}>
-                    {" "}
-                    star{" "}
-                  </span>
-                  <span className={"material-icons " + classes.star}>
-                    {" "}
-                    star{" "}
-                  </span>
-                </h3>
-              </section>
-            </Card>
+            <BarRate rating={avaliacao}/>
           </Row>
           <Row className="mt-4">
             <Card body>

@@ -1,0 +1,11 @@
+.modalList {
+    list-style: none;
+}
+
+.opening {
+    color: rgb(143, 235, 143);
+}
+
+.close {
+    color: rgb(230, 123, 123);
+}
