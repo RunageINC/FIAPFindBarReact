@@ -1,0 +1,53 @@
+import { fiapURL } from '../../static/config';
+import { useRef } from 'react';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+
+import Col from 'react-bootstrap/Col';
+
+const FormTag = ({ barId, addTagHandler }) => {
+    const tagRef = useRef();
+    const url = fiapURL + "/tags/bares/" + barId;
+
+    const onSubmitFormHandle = async (event) => {
+        event.preventDefault();
+
+        try {
+            await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    value: tagRef,
+                }),
+            });
+
+            addTagHandler(tag);
+        } catch (error) {
+            console.log(error);
+        }
+    }   
+
+    return (
+        <Form onSubmit={onSubmitFormHandle}>
+            <Col sm="10">
+                <Form.Control
+                    required
+                    type="text"
+                    name="tag"
+                    id="tag"
+                    placeholder="Não encontrou a tag que queria? Adicione aqui!"
+                    ref={tagRef}
+                />  
+            </Col>
+            <Col sm="2">
+                <Button type="submit">
+                    <span className="material-icons" style={{ color: "white" }}> send </span>
+                </Button>
+            </Col>
+        </Form>
+    );
+}
+
+export default FormTag;

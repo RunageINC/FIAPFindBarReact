@@ -99,7 +99,7 @@ const BarInfo = (props) => {
             </Card>
           </Row>
           <Row className="mt-4">
-            <TagList tagList={barTags} />
+            <TagList tagList={barTags} addTagHandler={addTagHandler} />
           </Row>
         </Container>
       </Modal.Body>
