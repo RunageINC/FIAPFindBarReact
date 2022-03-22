@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
-const FormComentary = ({ barId }) => {
+const FormComentary = ({ barId, addCommentHandler }) => {
   const commentRef = useRef();
   const rateRef = useRef();
   const url = fiapURL + "/comentarios/bares/" + barId;
@@ -15,11 +15,9 @@ const FormComentary = ({ barId }) => {
     event.preventDefault();
 
     const formData = {
-      comment: commentRef.current.value,
-      rate: rateRef.current.value,
+      mensagem: commentRef.current.value,
+      nota: rateRef.current.value,
     };
-
-    console.log(formData);
 
     try {
       await fetch(url, {
@@ -28,10 +26,13 @@ const FormComentary = ({ barId }) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          mensagem: formData.comment,
-          nota: formData.rate,
+          mensagem: formData.mensagem,
+          nota: formData.nota,
         }),
       })
+
+      addCommentHandler(formData);
+      event.reset();
     } catch (error) {
       console.log(error);
     }

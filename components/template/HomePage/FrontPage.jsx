@@ -15,6 +15,8 @@ const FrontPage = (props) => {
   const [modalShow, setModalShow] = useState(false);
   const { barList, barImageList } = props;
   const [chosenBar, setChosenBar] = useState(barList[0]);
+  const [chosenBarComments, setChosenBarComments] = useState(barList[0].comentarios);
+  const [chosenBarTags, setChosenBarTags] = useState(barList[0].tags);
 
   const randomImage = () => {
     const index = Math.floor(Math.random() * barImageList.length);
@@ -22,7 +24,7 @@ const FrontPage = (props) => {
     return barImageList[index].img;
   };
 
-  const onShow = async (bar) => {
+  const onShow = async () => {
     setModalShow(true);
   }
 
@@ -32,6 +34,16 @@ const FrontPage = (props) => {
 
   const handleBarChosen = (bar) => {
     setChosenBar(bar);
+    setChosenBarComments(bar.comentarios);
+    setChosenBarTags(bar.tags);
+  }
+
+  const onAddComment = (comentario) => {
+    setChosenBarComments([...chosenBarComments, comentario]);
+  }
+
+  const onAddTag = (tag) => {
+    setChosenBarTags([...chosenBarTasg, tag]);
   }
 
   return (
@@ -62,6 +74,10 @@ const FrontPage = (props) => {
       <BarInfo 
         show={modalShow}
         onHide={onHide}
+        barComments={chosenBarComments}
+        barTags={chosenBarTags}
+        onAddComment={onAddComment}
+        onAddTag={onAddTag}
         bar={chosenBar}
         imageList={barImageList}/>
     </Container>

@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
@@ -13,14 +15,22 @@ import BarComment from "../../molecules/BarComment/BarComment";
 import classes from "./BarInfo.module.css";
 
 const BarInfo = (props) => {
-  const { bar, imageList } = props;
-  const { estilos_musicais, comentarios, tags } = bar;
+  const { bar, imageList, barComments, barTags, onAddComment, onAddTag } = props;
+  const { estilos_musicais } = bar;
 
   const randomImage = () => {
     const index = Math.floor(Math.random() * imageList.length);
 
     return imageList[index].img;
   };
+
+  const addCommentHandler = (comment) => {
+    onAddComment(comment);
+  }
+
+  const addTagHandler = (tag) => {
+    onAddTag(tag);
+  }
 
   const chosenImage = randomImage();
 
@@ -138,13 +148,13 @@ const BarInfo = (props) => {
           </Row>
           <Row className="mt-4">
             <Card body>
-              {comentarios.length > 0 ? (
-                comentarios.map((comentario) => (
+              {barComments.length > 0 ? (
+                barComments.map((comment) => (
                   <BarComment 
-                    mensagem={comentario.mensagem}
+                    mensagem={comment.mensagem}
                     key={Math.random(100)}
                     hasComment={true}
-                    nota={comentario.nota}
+                    nota={comment.nota}
                   />
                 ))
               ) : (
@@ -187,7 +197,10 @@ const BarInfo = (props) => {
           </Row>
           <Row className="mt-4">
             <Card body>
-              <FormComentary barId={bar.id}/>
+              <FormComentary 
+                barId={bar.id}
+                addCommentHandler={addCommentHandler}
+              />
             </Card>
           </Row>
         </Container>
