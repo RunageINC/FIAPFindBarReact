@@ -9,3 +9,5 @@ const MusicalStyles = ({type, hasLiveMusic, musicalStyles }) => {
     <BarLiveMusic hasLiveMusic={hasLiveMusic} />
   </Card>;
 };
+
+export default MusicalStyles;
