@@ -18,7 +18,7 @@ const TagList = ({ tagList, addTagHandler, barId }) => {
             />
           );
         })}
-        <FormTag addTagHandler={addTagHandler} barId={barId} />
+        <FormTag className="mt-3" addTagHandler={addTagHandler} barId={barId} />
       
     </Card>
   );
